@@ -1,0 +1,104 @@
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 28px;
+}
+
+.project-card {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  transition: all .4s var(--ease);
+  cursor: none;
+}
+.project-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent);
+  box-shadow: 0 24px 64px var(--glow);
+}
+
+.project-thumb {
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.thumb-health { background: linear-gradient(135deg, #0d1b3e, #1a2a6c, #b21f1f44); }
+.thumb-food   { background: linear-gradient(135deg, #1a0533, #4a0066, #ff660044); }
+.thumb-shop   { background: linear-gradient(135deg, #0d2b1d, #0a4a2f, #00d4ff22); }
+
+.thumb-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,.55));
+}
+
+.proj-emoji {
+  position: relative;
+  z-index: 1;
+  font-size: 4rem;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,.5));
+  transition: transform .4s var(--ease);
+  display: inline-block;
+}
+.proj-emoji.hovered { transform: scale(1.18) rotate(-4deg); }
+
+.project-body { padding: 24px; }
+
+.project-name {
+  font-family: var(--font-head);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.project-desc {
+  font-size: .88rem;
+  color: var(--muted);
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+
+.project-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+.stack-pill {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  padding: 3px 10px;
+  border-radius: 50px;
+  font-size: .73rem;
+  font-family: var(--font-mono);
+  color: var(--muted);
+}
+
+.project-links { display: flex; gap: 10px; flex-wrap: wrap; }
+.proj-link-demo,
+.proj-link-gh {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: .82rem;
+  font-weight: 500;
+  transition: all .2s var(--ease);
+  border: 1px solid;
+  cursor: none;
+}
+.proj-link-demo {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff;
+  border-color: transparent;
+}
+.proj-link-demo:hover { opacity: .88; transform: translateY(-2px); }
+.proj-link-gh {
+  background: transparent;
+  color: var(--muted);
+  border-color: var(--border2);
+}
+.proj-link-gh:hover { color: var(--text); border-color: var(--text); transform: translateY(-2px); }
+
+@media (max-width: 768px) {
+  .projects-grid { grid-template-columns: 1fr; }
+}

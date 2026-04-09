@@ -1,0 +1,174 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 120px 5vw 80px;
+}
+
+.hero-bg { position: absolute; inset: 0; z-index: 0; }
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: .22;
+  animation: orbPulse 6s ease-in-out infinite;
+}
+.orb1 { width: 600px; height: 600px; top: -100px; right: -100px; background: radial-gradient(circle, var(--accent2), transparent 70%); }
+.orb2 { width: 500px; height: 500px; bottom: -50px; left: -100px; background: radial-gradient(circle, var(--accent), transparent 70%); animation-delay: -3s; }
+.orb3 { width: 300px; height: 300px; top: 40%; left: 40%; background: radial-gradient(circle, var(--accent3), transparent 70%); opacity: .10; animation-delay: -1.5s; }
+
+@keyframes orbPulse {
+  0%, 100% { transform: scale(1) translate(0,0); }
+  50%       { transform: scale(1.08) translate(20px,-20px); }
+}
+
+.particles-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: .8rem;
+  font-family: var(--font-mono);
+  color: var(--accent);
+  margin-bottom: 24px;
+  animation: fadeUp .8s var(--ease) both;
+}
+.badge-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: blink 1.4s infinite;
+}
+@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:.2;} }
+
+.hero-name {
+  font-family: var(--font-head);
+  font-size: clamp(2.8rem, 7vw, 6rem);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -.04em;
+  margin-bottom: 16px;
+  animation: fadeUp .8s .1s var(--ease) both;
+}
+.gradient-text {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 50%, var(--accent3) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200%;
+  animation: gradShift 4s linear infinite;
+}
+@keyframes gradShift {
+  0%  { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100%{ background-position: 0% 50%; }
+}
+
+.hero-roles {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-weight: 500;
+  color: var(--muted);
+  margin-bottom: 20px;
+  min-height: 2.2em;
+  animation: fadeUp .8s .2s var(--ease) both;
+}
+.typed-text { color: var(--accent); font-family: var(--font-mono); }
+.blink-cursor { color: var(--accent); animation: blink .8s infinite; }
+
+.hero-desc {
+  font-size: 1.05rem;
+  color: var(--muted);
+  max-width: 540px;
+  margin-bottom: 40px;
+  line-height: 1.8;
+  animation: fadeUp .8s .3s var(--ease) both;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  animation: fadeUp .8s .4s var(--ease) both;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 44px;
+  margin-top: 52px;
+  flex-wrap: wrap;
+  animation: fadeUp .8s .5s var(--ease) both;
+}
+.stat-item { display: flex; flex-direction: column; }
+.stat-num {
+  font-family: var(--font-head);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+.stat-label {
+  font-size: .78rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: .75rem;
+  font-family: var(--font-mono);
+  animation: fadeIn 1.2s 1s both;
+}
+.scroll-line {
+  width: 1px;
+  height: 50px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  animation: scrollAnim 2s ease-in-out infinite;
+}
+@keyframes scrollAnim {
+  0%    { transform: scaleY(0); transform-origin: top; }
+  50%   { transform: scaleY(1); transform-origin: top; }
+  50.01%{ transform: scaleY(1); transform-origin: bottom; }
+  100%  { transform: scaleY(0); transform-origin: bottom; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@media (max-width: 480px) {
+  .hero-ctas { flex-direction: column; }
+  .hero-ctas .btn-primary, .hero-ctas .btn-outline { justify-content: center; }
+}
